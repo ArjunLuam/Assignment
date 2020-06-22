@@ -10,11 +10,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.practice.R;
 import com.example.practice.models.ArrayData;
+import com.example.practice.models.DiffUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,16 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.Ho
         this.context = context;
         this.arrayList = arrayList;
     }
+
+
+    public void diffUtilsChangeData(List<ArrayData> data){
+        DiffUtils diffUtils=new DiffUtils(this.arrayList,data);
+        DiffUtil.DiffResult diffResult=DiffUtil.calculateDiff(diffUtils);
+        this.arrayList.clear();
+        this.arrayList.addAll(arrayList);
+        diffResult.dispatchUpdatesTo(this);
+    }
+
 
     @NonNull
     @Override

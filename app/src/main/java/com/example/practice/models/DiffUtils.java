@@ -4,10 +4,17 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DiffUtils extends DiffUtil.Callback {
-    ArrayList<ArrayData>oldlist;
-    ArrayList<ArrayData>newlist;
+    List<ArrayData> oldlist;
+    List<ArrayData>newlist;
+
+    public DiffUtils(List<ArrayData> arrayList, List<ArrayData> data) {
+        this.oldlist=oldlist;
+        this.newlist=newlist;
+    }
+
     @Override
     public int getOldListSize() {
         return oldlist.size();
