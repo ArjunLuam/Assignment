@@ -24,7 +24,7 @@ public class DiffUtils extends DiffUtil.Callback {
     public int getNewListSize() {
         return newlist.size();
     }
-
+    //Making comparisons the files that are changed will only get updated
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
         return oldlist.get(oldItemPosition).getpF()==newlist.get(newItemPosition).getpF();

@@ -2,6 +2,8 @@ package com.example.practice.models;
 
 public class ArrayData {
 
+    //taking out image url,title and category 
+
     private String t;
     private String cat;
     private String pF;

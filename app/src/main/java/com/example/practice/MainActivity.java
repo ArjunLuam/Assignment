@@ -41,17 +41,26 @@ public class MainActivity extends AppCompatActivity {
         fetchData();
     }
 
+
+    //Fetching data from retrofit
     private void fetchData() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         builder.addInterceptor(interceptor);
 
+
+
+    //Retrofit client instance
         Retrofit.Builder build = new Retrofit.Builder()
                 .baseUrl("https://d51md7wh0hu8b.cloudfront.net/")
                 .addConverterFactory(GsonConverterFactory.create());
 
         retrofit = build.build();
+
+
+
+        //Api call
         RetroApi retroApi = retrofit.create(RetroApi.class);
         Call<List<RetrofitModel>> call = retroApi.retrofitModel();
         call.enqueue(new Callback<List<RetrofitModel>>() {

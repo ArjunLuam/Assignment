@@ -52,6 +52,8 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.Ho
 
     @Override
     public void onBindViewHolder(@NonNull HorizontalViewHolder holder, int position) {
+        //setting up UI and adding functionality to it
+
         ArrayData horizontalModel = arrayList.get(position);
         holder.title.setText(horizontalModel.getT());
         Glide.with(context).load(horizontalModel.getpF()).into(holder.imgthmb);
@@ -72,6 +74,9 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.Ho
     }
 
     public class HorizontalViewHolder extends RecyclerView.ViewHolder  {
+
+        //Declaring the views
+
         TextView title;
         ImageView imgthmb;
         ImageView playicon;
