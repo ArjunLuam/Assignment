@@ -13,7 +13,12 @@ public class RetrofitModel {
     }
 
     public String getTitle() {
-        return title;
+        if(title.equals("")){
+            return "NO TITLE";
+        }
+        else{
+            return title;
+        }
     }
 
     public void setTitle(String title) {

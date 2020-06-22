@@ -6,11 +6,7 @@ public class ArrayData {
     private String cat;
     private String pF;
 
-    public ArrayData(String t, String cat, String pF) {
-        this.t = t;
-        this.cat = cat;
-        this.pF = pF;
-    }
+
 
     public String getT() {
         return t;

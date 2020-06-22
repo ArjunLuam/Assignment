@@ -11,21 +11,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.practice.R;
-import com.example.practice.models.HorizontalModel;
-import com.example.practice.models.VerticalModel;
+import com.example.practice.models.ArrayData;
+import com.example.practice.models.RetrofitModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.VerticalViewHolder> {
 
     Context context;
-    ArrayList<VerticalModel>arrayList;
+    List<RetrofitModel> arrayList;
 
     //Constructor of vertical adapter class
 
-    public VerticalAdapter(Context context,ArrayList<VerticalModel> arrayList){
-        this.arrayList=arrayList;
-        this.context=context;
+    public VerticalAdapter(Context context, List<RetrofitModel> arrayList) {
+        this.arrayList = arrayList;
+        this.context = context;
     }
 
 
@@ -33,20 +34,20 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.Vertic
     @Override
     public VerticalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //inflating layout
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_vertical,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_vertical, parent, false);
         return new VerticalViewHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull VerticalViewHolder holder, int position) {
-        VerticalModel verticalModel=arrayList.get(position);
-        String title=verticalModel.getTitle();
-        ArrayList<HorizontalModel>singleitem=verticalModel.getArrayList();
+        RetrofitModel verticalModel = arrayList.get(position);
+        String title = verticalModel.getTitle();
+        ArrayList<ArrayData> singleitem = verticalModel.getData();
         holder.textView.setText(title);
-        HorizontalAdapter horizontalAdapter=new HorizontalAdapter(context,singleitem);
+        HorizontalAdapter horizontalAdapter = new HorizontalAdapter(context, singleitem);
         holder.recyclerView.setHasFixedSize(true);
-        holder.recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
+        holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         holder.recyclerView.setAdapter(horizontalAdapter);
     }
 
@@ -55,14 +56,15 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.Vertic
         return arrayList.size();
     }
 
-    public class VerticalViewHolder extends RecyclerView.ViewHolder{
+    public class VerticalViewHolder extends RecyclerView.ViewHolder {
 
         RecyclerView recyclerView;
         TextView textView;
+
         public VerticalViewHolder(@NonNull View itemView) {
             super(itemView);
-            recyclerView=itemView.findViewById(R.id.rv1);
-            textView=itemView.findViewById(R.id.txttitle1);
+            recyclerView = itemView.findViewById(R.id.rv1);
+            textView = itemView.findViewById(R.id.txttitle1);
         }
     }
 }
